@@ -1,7 +1,7 @@
 {
-  "name": "pacakge_name",
+  "name": "knightro-bot",
   "version": "1.0.0",
-  "description": "package_description",
+  "description": "A discord bot to fulfill the needs of UCF students.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/suneettipirneni/node-typescript-template.git"
+    "url": "git+https://github.com/suneettipirneni/knightro-bot.git"
   },
   "author": "Suneet Tipirneni",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/suneettipirneni/node-typescript-template/issues"
+    "url": "https://github.com/suneettipirneni/knightro-bot/issues"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -30,7 +30,7 @@
       "eslint --fix"
     ]
   },
-  "homepage": "https://github.com/suneettipirneni/node-typescript-template#readme",
+  "homepage": "https://github.com/suneettipirneni/knightro-bot#readme",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
