@@ -13,7 +13,7 @@
     "lint": "eslint --fix ./src",
     "format": "prettier --write ./src",
     "pre-commit": "lint-staged",
-    "postinstall": "husky install"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@knighthacks/dispatch": "^0.1.0-dev-21d7e85",
     "axios": "^0.21.1",
     "dotenv": "^10.0.0"
   }
