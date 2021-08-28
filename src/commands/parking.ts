@@ -37,7 +37,7 @@ async function getParkingData(
 
 function generateEmbed(data: GarageData): MessageEmbed {
   return new MessageEmbed()
-    .setTitle('data.name')
+    .setTitle(data.name)
     .addField('Percent Full', `${data.percentFull}%`)
     .addField('Spaces Left', data.spacesLeft.toString())
     .addField('Spaces Filled', data.spacesFilled.toString())
@@ -81,6 +81,11 @@ const options: ApplicationCommandOptionData[] = [
     ],
     required: false,
   },
+  {
+    name: 'free',
+    description: 'Whether or not to show garages that are available or not.',
+    type: 'BOOLEAN',
+  },
 ];
 
 const ParkingCommand: Command = {
@@ -91,24 +96,37 @@ const ParkingCommand: Command = {
     await interaction.deferReply();
 
     const garage = interaction.options.getString('garage');
+    const free = interaction.options.getBoolean('free');
 
-    const garageData = await getParkingData(garage);
+    let garageData = await getParkingData(garage);
 
     if (!garageData) {
       await interaction.followUp('Could not fetch parking data');
       return;
     }
 
+    if (free) {
+      garageData = garageData?.filter((data) => data.spacesLeft > 0);
+    }
+
     if (garage) {
       const [data] = garageData;
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const embed = generateEmbed(data!);
+
+      if (!data) {
+        throw new TypeError();
+      }
+
+      const embed = generateEmbed(data);
       await interaction.followUp({ embeds: [embed] });
       return;
     }
 
     const embeds = garageData.map(generateEmbed);
-    await sendPaginatedEmbeds(interaction, embeds);
+
+    await sendPaginatedEmbeds(interaction, embeds, {
+      nextLabel: 'Next Garage',
+      previousLabel: 'Previous Garage',
+    });
   },
 };
 
