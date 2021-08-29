@@ -18,7 +18,8 @@
     "lint": "eslint --fix ./src",
     "format": "prettier --write ./src",
     "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
