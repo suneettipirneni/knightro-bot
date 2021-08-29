@@ -2,6 +2,7 @@ import { Command } from '@knighthacks/dispatch';
 import axios from 'axios';
 import { MessageEmbed } from 'discord.js';
 import { sendPaginatedEmbeds } from 'discord.js-embed-pagination';
+import { embedColor } from '../colors';
 
 const URL = 'https://calendar.ucf.edu/json/2021/fall';
 
@@ -55,6 +56,7 @@ async function getUCFEvents() {
 function generateEmbed(event: Event): MessageEmbed {
   const embed = new MessageEmbed()
     .setTitle(event.summary)
+    .setColor(embedColor)
     .addField('Date', new Date(event.dtstart).toLocaleDateString())
     .setURL(event.directUrl);
 

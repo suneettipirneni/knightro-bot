@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ApplicationCommandOptionData, MessageEmbed } from 'discord.js';
 import { sendPaginatedEmbeds } from 'discord.js-embed-pagination';
 import humps from 'humps';
+import { embedColor } from '../colors';
 
 const URL = 'https://api.ucfgarages.com/';
 
@@ -38,6 +39,7 @@ async function getParkingData(
 function generateEmbed(data: GarageData): MessageEmbed {
   return new MessageEmbed()
     .setTitle(data.name)
+    .setColor(embedColor)
     .addField('Percent Full', `${data.percentFull}%`)
     .addField('Spaces Left', data.spacesLeft.toString())
     .addField('Spaces Filled', data.spacesFilled.toString())
