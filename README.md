@@ -8,4 +8,4 @@ https://discord.com/oauth2/authorize?client_id=880164685117263873&permissions=32
 
 # Credit
 
-Credit to @ctcuff for the amazing UCF API's!
+Credit to [@ctcuff](https://github.com/ctcuff) for the amazing UCF API's!
