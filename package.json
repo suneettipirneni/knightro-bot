@@ -4,6 +4,7 @@
   "description": "A discord bot to fulfill the needs of UCF students.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "start": "npm run start:dev",
