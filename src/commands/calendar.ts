@@ -47,9 +47,15 @@ async function getUCFEvents() {
     return null;
   }
 
+  const date = new Date();
+
   // Filter out only academic dates
   return events
-    .filter((event) => event.category === 'Academic Dates and Deadlines')
+    .filter(
+      (event) =>
+        event.category === 'Academic Dates and Deadlines' &&
+        new Date(event.dtstart).getTime() > date.getTime()
+    )
     .slice(0, 10);
 }
 
